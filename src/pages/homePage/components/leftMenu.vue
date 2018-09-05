@@ -1,12 +1,47 @@
 <template>
     <div class="leftMenuTree">
-      这是左侧树形菜单
+      <ul id='tree' class="ztree txt-sm"></ul>
     </div>
 </template>
 
 <script>
 export default {
-  name: 'leftMenuTree'
+  name: 'leftMenuTree',
+  data () {
+    return {
+      type: [],
+      message :[
+        {
+          id: 1,
+          name: '张三',
+          pid: '0',
+          children:[
+            {
+          id: 9,
+          name: '李四',
+          pid: '1'
+        },
+          ]
+        },
+        {
+          id: 9,
+          name: '李四',
+          pid: '1'
+        },
+        {
+          id: 6,
+          name: '万物',
+          pid: '1'
+        },
+      ]
+    }
+  },
+  methods: {
+
+  },
+  mounted () {
+    $.fn.zTree.init($('#tree'),this.type,this.message)
+  }
 }
 </script>
 

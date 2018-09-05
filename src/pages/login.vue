@@ -91,6 +91,10 @@ export default {
 		},
 		callBack(res) {
 		}
-	},
+  },
+  mounted () {
+    console.error(this.$store)
+    console.error($)
+  }
 }
 </script>
