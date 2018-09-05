@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 17 17">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #4372b0;
+        stroke: #0b76bf;
+        stroke-width: 1px;
+        fill-rule: evenodd;
+      }
+    </style>
+  </defs>
+  <path id="more-right" fill='red' class="cls-1" d="M1617.03,1170a8,8,0,1,0-8,8A8,8,0,0,0,1617.03,1170Zm-15,0a7,7,0,1,1,7,7A6.995,6.995,0,0,1,1602.03,1170Zm9.27,0.44a0.518,0.518,0,0,0,.13-0.44,0.509,0.509,0,0,0-.13-0.44l-3.83-3.83a0.5,0.5,0,0,0-.71.71l3.56,3.56-3.56,3.56a0.5,0.5,0,0,0,.71.71Z" transform="translate(-1600.53 -1161.5)"/>
+</svg>

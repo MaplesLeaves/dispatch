@@ -1,0 +1,35 @@
+*{
+  margin:0;
+  padding: 0;
+  list-style: none;
+  scrollbar-face-color:#b4babf;
+  scrollbar-highlight-width:5px;
+}
+html,body{
+  width: 100%;
+  height: 100%;
+}
+::-webkit-scrollbar {
+  width: 7px;
+  height: 7px;
+}
+::-webkit-scrollbar-button,scrollbar-button {
+  width: 0;
+  height: 0;
+  display: none;
+}
+/*定义滚动条轨道 内阴影+圆角*/
+::-webkit-scrollbar-track,scrollbar-track {
+  width: 15px;
+}
+
+::-webkit-scrollbar-corner,scrollbar-corner {
+  background-color: transparent;
+}
+
+/*定义滑块 内阴影+圆角*/
+::-webkit-scrollbar-thumb ,scrollbar-thumb{
+  width: 7px;
+  background-color: #b4babf;
+  border-radius: 7px;
+}
