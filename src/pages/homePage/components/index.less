@@ -1,0 +1,389 @@
+
+#orgTree{
+    padding: 20px;
+    .padding-20{
+        padding: 20px !important;
+    }
+    .margin-top-10{
+        margin-top: 10px;
+    }
+    .margin-top-bot-10{
+        margin: 20px 0;
+    }
+    .searchOrgName{
+        background: #2f354d;
+        .ivu-input{
+            background: #393f59;
+            border: 1px solid #393f59;
+            border-radius: 25px;
+            text-align: center;
+            color: #fff;
+        }
+    }
+    .ztreeWrap{
+        height: 92% !important;
+        overflow: scroll;
+        background: #393f59;
+        color: #fff;
+        .ztree li a{
+            color: #fff !important;
+        }
+        .ztree li a.curSelectedNode{
+            background-color: transparent;
+            border: 1px solid transparent ;
+        }
+        .ztree * {
+          font-size: 14px;
+        }
+    }
+    ::-webkit-scrollbar {
+      width: 7px;
+      height: 7px;
+    }
+
+    ::-webkit-scrollbar-button {
+      width: 0;
+      height: 0;
+      display: none;
+    }
+
+    /*定义滚动条轨道 内阴影+圆角*/
+    ::-webkit-scrollbar-track {
+      width: 15px;
+    }
+
+    ::-webkit-scrollbar-corner {
+      background-color: transparent;
+    }
+
+    /*定义滑块 内阴影+圆角*/
+    ::-webkit-scrollbar-thumb {
+      width: 7px;
+      background-color: #b4babf;
+      border-radius: 7px;
+    }
+    .inlineBlock{
+        display: inline-block;
+    }
+    .user-infor{
+        height: 135px;
+    }
+    .avator-img{
+        display: block;
+        width: 80%;
+        max-width: 100px;
+        height: auto;
+    }
+    .card-user-infor-name{
+        font-size: 2em;
+        color: #2d8cf0;
+    }
+    .card-title{
+        color: #abafbd;
+    }
+    .made-child-con-middle{
+        height: 100%;
+    }
+    .to-do-list-con{
+        height: 145px;
+        overflow: auto;
+    }
+    .to-do-item{
+        padding: 2px;
+    }
+    .infor-card-con{
+        height: 100px;
+    }
+    .infor-card-icon-con{
+        height: 100%;
+        color: white;
+        border-radius: 3px 0 0 3px;
+    }
+    .map-con{
+        height: 305px;
+    }
+    .map-incon{
+        height: 100%;
+    }
+    .data-source-row{
+        height: 200px;
+    }
+    .line-chart-con{
+        height: 150px;
+    }
+    .centerContent{
+        background: #f2f4f8;
+        height: 100%;
+        .rightPhone{
+            width: 100%;
+            height: 65%;
+        }
+        .rightCallDesk{
+            width: 100%;
+            height: 35%;
+        }
+        .rightPhone .ivu-tabs{
+            width: 100%;
+            height: 100%;
+            .ivu-tabs-bar{
+                width: 100%;
+                margin-bottom: 0 !important;
+                border: none !important;
+            }
+            .ivu-tabs-content{
+                height: 90%;
+                background: #f2f4f8;
+                .ivu-tabs-tabpane{
+                    height: 100%;
+                    .noCallWrap{
+                        height: 100%;
+                        line-height: 300px;
+                    }
+                    .callWrap{
+                        height: 93%;
+                        overflow-y: scroll;
+                        overflow-x: hidden;
+                        li{
+                            margin: 0 20px;
+                            padding: 15px 0;
+                            border-bottom: 1px solid #dadcdf;
+                            .headPortrait, .name{
+                                display: inline-block;
+                            }
+                            .headPortrait{
+                                width: 40px;
+                                height: 40px;
+                                border-radius: 50%;
+                                background: #eee;
+                                line-height: 40px;
+                                text-align: center;
+                                img{
+                                    width: 100%;
+                                    height: 100%;
+                                    border-radius: 50%;
+                                }
+                            }
+                            .name{
+                                line-height: 40px;
+                                .name{
+                                    width: 70px;
+                                    overflow: hidden;
+                                    text-overflow:ellipsis;
+                                    white-space: nowrap;
+                                    vertical-align: middle;
+                                    margin-right: 10px;
+                                }
+                                .phone{
+                                    font-size:13px;
+                                    color:gray;
+                                    vertical-align: middle;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        .rightPhone .ivu-tabs.ivu-tabs-card > .ivu-tabs-bar .ivu-tabs-tab{
+            border: none;
+            margin-right: 0;
+            padding: 15px 0;
+            width: 25%;
+            border-radius: 0;
+            height: auto;
+        }
+        .rightPhone .ivu-tabs.ivu-tabs-card>.ivu-tabs-bar .ivu-tabs-nav-container{
+            width: 100%;
+            height: auto;
+        }
+        .rightPhone .ivu-tabs.ivu-tabs-card>.ivu-tabs-bar .ivu-tabs-nav-wrap{
+            width: 100%;
+        }
+        .rightPhone .ivu-tabs-nav-scroll{
+            width: 100%;
+            .ivu-tabs-nav{
+                width: 100%;
+            }
+        }
+        & .rightPhone .ivu-tabs-content .ivu-tabs.ivu-tabs-card > .ivu-tabs-bar .ivu-tabs-tab{
+            background: #e2e2eb;
+            padding: 10px 0;
+       }
+       & .rightPhone .ivu-tabs-content .ivu-tabs.ivu-tabs-card>.ivu-tabs-bar .ivu-tabs-tab-active{
+            background: #f2f4f8;
+       }
+       &>.rightPhone .ivu-tabs.ivu-tabs-card > .ivu-tabs-bar .ivu-tabs-tab{
+            background: #5c627f;
+       }
+    }
+    .headImg{
+        width: 65px;
+        height: 65px;
+        border-radius: 50%;
+        overflow: hidden;
+        line-height: 75px;
+        position: relative;
+        background: #eee;
+        img{
+            width: 100%;
+            height: 100%;
+        }
+    }
+    .personStatus{
+        position: absolute;
+        top: 10%;
+        right: 7%;
+        z-index: 1000;
+    }
+    .alarmListTopBtn {
+      .btn{
+        border-radius: 5px 5px 0 0;
+        padding: 5px 20px;
+      }
+    }
+    .personSinge{
+        width: 20%;
+        display: inline-table;
+        vertical-align: top;
+        position: relative;
+        .personSinge-1{
+          padding: 20px 0px;
+          background: #fff;
+          margin: 10px;
+          border-radius: 5px;
+          box-shadow: 0 0 20px 1px  #dedede;
+        }
+        .personSinge-1:hover {
+            background: #f2f2f5;
+            transition: all 0.2s linear;
+        }
+        .leftImg, .rightInfo{
+            display: inline-block;
+        }
+        .leftImg{
+            width: 32%;
+            height: auto;
+            vertical-align: top;
+            position: relative;
+            margin-right: 5px;
+        }
+        .rightInfo{
+            width: 60%;
+            padding-left: 15px;
+            border-left: 1px solid #eee;
+            .personName{
+                display:inline-block;
+                width: 100%;
+                overflow: hidden;
+                text-overflow:ellipsis;
+                white-space: nowrap;
+            }
+        }
+    }
+    .closeIcon:hover {
+        color: #2d87f9;
+    }
+    .recommendPerson{
+        width: 100%;
+        height: 15%;
+        white-space: nowrap;
+        vertical-align: top;
+        overflow-x: scroll;
+        overflow-y: hidden;
+    }
+    .topUserName{
+      padding: 20px 0 10px 10px;;
+      .left{
+          display: inline-block;
+          width: 5px;
+          height: 15px;
+          background: #ff9600;
+          vertical-align: middle;
+      }
+      .right{
+          vertical-align: middle;
+          padding-left: 10px;
+          font-weight: bold;
+      }
+    }
+    .callDesk{
+        width: 100%;
+        height: 100%;
+        padding: 20px;
+        background: #2f354d;
+        .ivu-input{
+            background: #393f59;
+            border: 1px solid #393f59;
+            border-radius: 25px;
+            text-align: center;
+            color: #fff;
+        }
+        .callDeskNumber{
+            width: 33px;
+            height: 33px;
+            background: #393f59;
+            line-height: 33px;
+            border-radius: 50%;
+            color: #fff;
+            text-align:center;
+            cursor: pointer;
+        }
+        .callDeskNumber:hover{
+            transition: all 0.2s linear;
+            background: #fff;
+            color: #393f59;
+        }
+    }
+    .rightCallBottomBtn{
+        position: absolute;
+        bottom: 10px;
+        z-index: 1000;
+        .onekeyDial{
+            width: 80%;
+            background: #1dc91d;
+            color: #fff;
+        }
+        .onekeyEnd{
+            width: 80%;
+            background: red;
+            color: #fff;
+        }
+        .clearCallList{
+            width: 80%;
+            background: #fff;
+        }
+    }
+    .alarmInfoLeft{
+        display: inline-block;
+        width: 5px;
+        height: 15px;
+        background: #ff9600;
+        vertical-align: middle;
+    }
+    .alarmInfoRight{
+        vertical-align: middle;
+        padding-left: 10px;
+        font-weight: bold;
+    }
+    .infoName{
+        margin: 5px 0;
+    }
+    .userLIst{
+        height: 50%;
+        overflow: scroll;
+        .personSinge .personSinge-1{
+          background: #f2f2f5;
+          .rightInfo{
+              border-left: 1px solid #e6e6e9;
+          }
+        }
+        .personSinge .personSinge-1:hover{
+          background: #fff;
+        }
+    }
+    .treeWrap{
+        height: 100%;
+        border-right: 1px solid lightgray;
+        background: #fff;
+    }
+}

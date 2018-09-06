@@ -1,46 +1,44 @@
 <template>
     <div class="leftMenuTree">
-      <ul id='tree' class="ztree txt-sm"></ul>
+      <div style="text-align:center;margin-top: 10px;">
+      <el-input size='mini' placeholder="请输入" style="width: 80% ;background:#024B7B"></el-input>
+      </div>
+      <div class="titleBox">
+        <div class="tilleBtn">
+          <span @click="isType = true" :class="{serchClick: isType}">人员通讯录</span>
+          <span @click="isType = false" :class="{serchClick: !isType}">资源通讯录</span>
+        </div>
+        <div class="type">
+          <el-button size='mini' @click="serchType(0)" type="primary">行政管辖</el-button>
+          <el-button size='mini' @click="serchType(1)">业务管辖</el-button>
+        </div>
+      </div>
+      <p style="color:white;text-align:center;margin-top:10px">常用联系人</p>
+      <tree-node @getNode="getNode"></tree-node>
     </div>
 </template>
-
 <script>
 export default {
   name: 'leftMenuTree',
   data () {
     return {
-      type: [],
-      message :[
-        {
-          id: 1,
-          name: '张三',
-          pid: '0',
-          children:[
-            {
-          id: 9,
-          name: '李四',
-          pid: '1'
-        },
-          ]
-        },
-        {
-          id: 9,
-          name: '李四',
-          pid: '1'
-        },
-        {
-          id: 6,
-          name: '万物',
-          pid: '1'
-        },
-      ]
+      isType: true
     }
   },
   methods: {
+    getNode (data) {
+      this.$emit('clickTree',true,data)
+    },
+    serchType (data) { // 点击行政管辖  业务管辖
 
+      // if(data) {
+      //   this.isType = true
+      // } else {
+      //   this.isType = false
+      // }
+    }
   },
   mounted () {
-    $.fn.zTree.init($('#tree'),this.type,this.message)
   }
 }
 </script>
@@ -48,5 +46,24 @@ export default {
 <style lang='less'>
   .leftMenuTree{
     height: 100%;
+    &>.titleBox{
+      &>.tilleBtn{
+        display: flex;
+        &>span{
+          width: 50%;
+          text-align: center;
+          color: white;
+          padding: 5px 0;
+          margin: 10px 0;
+        }
+        &>.serchClick{
+          background: #024B7B
+        }
+      }
+      &>.type{
+        text-align: center;
+      }
+    }
   }
+  
 </style>

@@ -43,6 +43,9 @@ export default {
 	padding: 15px 0 15px 15px;
 	width: 100%;
 	border-radius: 4px;
+	&:hover{
+		background: #AFDDFD
+	}
 	& > .user {
 		display: flex;
 		justify-content: space-between;

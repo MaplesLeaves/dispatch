@@ -1,7 +1,7 @@
 <template>
   <div class="menuNum">
     <div class="top">
-      <span v-for="(item, index) in numList" :key='index'>
+      <span v-for="(item, index) in numList" :key='index' @click="serchNum(item.num)">
         {{item.num}}
       </span>
     </div>
@@ -60,6 +60,9 @@ export default {
 			],
 		}
 	},
+	serchNum (data) {
+
+	}
 }
 </script>
 
@@ -84,6 +87,9 @@ export default {
 			border-radius: 50%;
 			background: #024b7b;
 			margin: 0 18px;
+			&:hover{
+				background: #66a8ff
+			}
 		}
 	}
 	& > .bottom {

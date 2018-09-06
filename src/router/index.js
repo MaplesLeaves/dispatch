@@ -31,6 +31,17 @@ export default new Router({
           name: 'scheduling',
           component: resolve => { require(['@/pages/scheduling/voiceConference.vue'], resolve) },
         },
+        {
+          path: '/audioConference',
+          name: 'audioConference',
+          component: resolve => { require(['@/pages/scheduling/audioConference.vue'], resolve) },
+        },
+        {
+          path: '/audioAndVideo',
+          name: 'audioAndVideo',
+          component: resolve => { require(['@/pages/scheduling/audioAndVideo.vue'], resolve) },
+        },
+        
       ]
     }
   ]

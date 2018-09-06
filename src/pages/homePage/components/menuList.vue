@@ -1,13 +1,32 @@
 <template>
   <div class="menuList">
     <div class="title">
-      <span>通话记录</span>
-      <span>微群消息</span>
+      <span @click="serchType(false)" :class="{isSerch: !type}">通话记录</span>
+      <span @click="serchType(true)" :class="{isSerch: type}">微群消息</span>
     </div>
-    <ul>
-      <li >
-        <div><span>丰汇分局</span><span>昨天</span></div>
-        <div><span>15094052915</span><span>2分12秒</span></div>
+    <ul v-if="!type">
+      <li>
+        <div>
+          <span>丰汇分局</span>
+          <span>昨天</span>
+        </div>
+        <div>
+          <span>15094052915</span>
+          <span>2分12秒</span>
+        </div>
+      </li>
+    </ul>
+    <ul v-if="type">
+      <li>
+        <div>
+          <div style="padding-top: 10px;padding-bottom: 5px">
+            <el-badge :value="200" :max="99" class="item">
+            816重大事件群
+            </el-badge>
+            </div>
+          <span>昨天</span>
+        </div>
+        <div class="message">张松：现在已经得到证据西安市放火行为是有人故意为之</div>
       </li>
     </ul>
   </div>
@@ -15,35 +34,54 @@
 <script>
 export default {
 	name: 'menuList',
+	data() {
+		return {
+			type: false,
+		}
+	},
+	methods: {
+		serchType(data) {
+			this.type = data
+		},
+	},
 }
 </script>
 <style lang='less'>
-  .menuList{
-    height: 100%;
-    background: white;
-    &>.title{
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      &>span{
-        text-align: center;
-        width: 50%;
-        background: skyblue;
-        padding: 5px 0;
-        color: white;
+.menuList {
+	height: 100%;
+	background: white;
+	& > .title {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		& > span {
+			text-align: center;
+			width: 50%;
+			background: #f8f8f8;
+			padding: 5px 0;
+		}
+		& > .isSerch {
+			background: #0b76bf;
+			color: white;
+		}
+	}
+	& > ul {
+		height: calc(~'100% - 31px');
+		padding: 0 15px;
+		& > li {
+			& > div {
+				display: flex;
+				justify-content: space-between;
+			}
+			padding: 5px 0;
+      border-bottom: 1px solid #eaeaea;
+      &>.message{
+        display:block;
+        overflow: hidden;
+        text-overflow:ellipsis;
+        white-space: nowrap;
       }
-    }
-    &>ul{
-      height: calc(~'100% - 31px');
-      padding: 0 15px;
-      &>li{
-        &>div{
-          display: flex;
-          justify-content: space-between;
-        }
-        padding: 5px 0;
-        border-bottom: 1px solid #EAEAEA;
-      }
-    }
-  }
+		}
+	}
+}
 </style>

@@ -1,11 +1,13 @@
-<template>
+<<template>
   <div class="homePage">
     <div class="left">
-      <left-tree></left-tree>
+      <left-tree @clickTree='getTree'></left-tree>
     </div>
     <div class="content">
-      <common></common>
-      <organization></organization>
+      <common v-if="!isShowduty"></common>
+			<recently v-if="!isShowduty"></recently>
+			<be-on-duty v-if="isShowduty"></be-on-duty>
+      <organization v-if="isShowduty"></organization>
     </div>
     <div class="right">
       <right-phone></right-phone>
@@ -18,7 +20,8 @@ import rightPhone from './components/rightPhone.vue'
 import userInfo from './components/userInfo.vue'
 import organization from './organization.vue'
 import common from './common.vue'
-
+import beOnDuty from './components/beOnDuty.vue'
+import recently from './recently.vue'
 export default {
 	name: 'homePage',
 	components: {
@@ -26,8 +29,20 @@ export default {
 		rightPhone,
     userInfo,
     organization,
-    common
+		common,
+		beOnDuty,
+		recently
 	},
+	data () {
+		return {
+			isShowduty: false
+		}
+	},
+	methods: {
+		getTree (...data) { // data[0] 为点击组织树  data[1]为点击数据
+			this.isShowduty = data[0]
+		}
+	}
 }
 </script>
 <style lang='less'>

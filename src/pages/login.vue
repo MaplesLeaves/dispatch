@@ -48,26 +48,26 @@
 </style>
 
 <template>
-  <div class="login">
-    <div class="loginSubmit" @keydown.enter="submitUser">
-      <div class="top">
-        <img width='65' height='65' src="../assets/logo.png" alt="">
-        <strong>多媒体调度系统</strong>
-        <p>DUOMEITIDIAODUXITONG</p>
-      </div>
-      <el-form ref="form" :model="form" class="submit">
-        <el-form-item>
-          <el-input v-model="form.userName" placeholder="请输入账户名称"></el-input>
-        </el-form-item>
-        <el-form-item>
-          <el-input v-model="form.password" type="password" placeholder="请输入账户密码"></el-input>
-        </el-form-item>
-        <el-form-item>
-          <el-button class='button' @click='submitUser' :loading="loading">登录</el-button>
-        </el-form-item>
-      </el-form>
-    </div>
-  </div>
+	<div class="login">
+		<div class="loginSubmit" @keydown.enter="submitUser">
+			<div class="top">
+				<img width='65' height='65' src="../assets/logo.png" alt="">
+				<strong>多媒体调度系统</strong>
+				<p>DUOMEITIDIAODUXITONG</p>
+			</div>
+			<el-form ref="form" :model="form" class="submit">
+				<el-form-item>
+					<el-input v-model="form.userName" placeholder="请输入账户名称"></el-input>
+				</el-form-item>
+				<el-form-item>
+					<el-input v-model="form.password" type="password" placeholder="请输入账户密码"></el-input>
+				</el-form-item>
+				<el-form-item>
+					<el-button class='button' @click='submitUser' :loading="loading">登录</el-button>
+				</el-form-item>
+			</el-form>
+		</div>
+	</div>
 </template>
 
 <script>
@@ -75,7 +75,7 @@ export default {
 	name: 'login',
 	data() {
 		return {
-			loading:false,
+			loading: false,
 			form: {
 				userName: '',
 				password: '',
@@ -85,16 +85,19 @@ export default {
 	},
 	methods: {
 		submitUser() {
-			this.$router.push({
-				name: 'homePage'
+			this.loading = true
+			this.$message({
+				message: '登录成功',
+				type: 'success',
 			})
+			setTimeout(() => {
+				this.loading = false
+				this.$router.push({
+					name: 'homePage',
+				})
+			}, 3000)
 		},
-		callBack(res) {
-		}
-  },
-  mounted () {
-    console.error(this.$store)
-    console.error($)
-  }
+		callBack(res) {},
+	},
 }
 </script>

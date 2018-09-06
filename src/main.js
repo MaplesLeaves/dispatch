@@ -7,12 +7,14 @@ import ElementUI from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css'
 import 'babel-polyfill' // 引入代买转换  兼容ie浏览器
 import SvgIcon from '@/components/SvgIconTip'
+import treeNode from '@/components/treeNode/treeNode.vue'
 import '../static/ztree/js/jquery.ztree.core.min' 
 import '../static/ztree/js/jquery.ztree.excheck.min' 
 import '../static/ztree/css/zTreeStyle.css' 
 import 'jquery'
 import store from './store'
 Vue.component('svg-icon', SvgIcon)
+Vue.component('tree-node', treeNode)
 Vue.use(ElementUI)
 
 Vue.config.productionTip = false
