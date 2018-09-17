@@ -1,0 +1,16 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: mds-web
+spec:
+  template:
+    metadata:
+      labels:
+        app: mds-web
+    spec:
+      containers:
+      - image: images.mti/mds/web:<BUILD_TAG>
+        imagePullPolicy: IfNotPresent
+        name: mds-web
+        ports:
+          - containerPort: 80

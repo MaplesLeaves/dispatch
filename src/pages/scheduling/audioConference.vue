@@ -1,5 +1,6 @@
 <template>
   <div class="audioConference">
+		<!-- 语音调度 -->
     <div class="left">
       <div class="title">
         <div class="left">
@@ -20,7 +21,7 @@
             <span></span>人
           </div>
           <div>
-            <el-button size='mini'>
+            <el-button size='mini' type="primary">
               邀请成员
             </el-button>
           </div>
@@ -31,27 +32,51 @@
 
       </div>
       <div class="content">
-        <audio-child v-for="item in 10 " class="userChild"></audio-child>
+        <audio-child v-for="(item, index) in 10 " :key="index" class="userChild"></audio-child>
       </div>
     </div>
     <div class="right">
-      <div class="userInfo"></div>
-      <div class="userMessage"></div>
-      <div class="userSubmit"></div>
+      <div class="userInfo">
+				<user-info></user-info>
+			</div>
+			
+      <div class="userMessage">
+				<div></div>
+				<message></message>
+			</div>
+      <div class="userSubmit">
+				<user-submit></user-submit>
+			</div>
     </div>
+		<!-- <call-dialog @error='error' width='430px'>
+			<mass-message></mass-message>
+		</call-dialog> -->
   </div>
 </template>
 
 <script>
 import audioChild from './components/audioChild.vue'
+import userInfo from './components/userInfo.vue'
+import userSubmit from './components/userSubmit.vue'
+import message from '../microgroupScheduling/components/message.vue'
 export default {
 	name: 'audioConference',
 	data() {
-		return {}
+		return {
+			centerDialogVisible:true
+		}
 	},
 	components: {
 		audioChild,
+		userInfo,
+		message,
+		userSubmit
 	},
+	methods: {
+		error (data) {
+			data = false
+		}
+	}
 }
 </script>
 <style lang='less'>
@@ -92,15 +117,16 @@ export default {
 		height: 100%;
 		& > .userInfo {
       height: 25%;
-      background: red
 		}
 		& > .userMessage {
-      height: 50%;
-      background: yellow
+			height: 50%;
+			&>.message{
+				background: #F6FAFF
+			}
 		}
 		& > .userSubmit {
-      height: 25%;
-      background: green
+			height: 25%;
+			background: white;
 		}
 	}
 }

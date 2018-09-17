@@ -1,260 +1,266 @@
 <template>
-  <div class="smsSchedulingPage">
-    <div class="left">
-      <ul>
-        <li>发送短信</li>
-        <li>发送记录</li>
-        <li>常用语录</li>
-        <li>签名设置</li>
-      </ul>
+  <div class="smsScheduling">
+    <div class="smsLeft">
+      <smsLeft/>
     </div>
-    <div class="content">
-      <div class="contentWrap">
-        <div class="smsTop">
-          <div class="recipient">收信人:</div>
-          <div class="userInfo">
-            <div class="user">
-              <div class="userTop">
-                <div>张阳阳</div>
-                <span>分局局长</span>
-              </div>
-              <div class="userBottom">
-                <div class="icon">x</div>
-                <div class="iphone">0323005</div>
-              </div>
-              <div class="close">x</div>
+    <div class="smsContent">
+      <!-- <div class="recipient">
+        <div class="recipientTitle">收信人</div>
+        <div class="recipientUser">
+          <div class="userInfo el-icon-error" v-for="(item,index) in userList" :key="item.id">
+            <div class="userTop">
+              <div>张阳阳</div>
+              <span>分局局长</span>
             </div>
-            <div class="user">
-              <div class="userTop">
-                <div>张阳阳</div>
-                <span>分局局长</span>
+            <div class="userBottom">
+              <div class="icon">
+                <svg-icon name='smsPhone' size='22'></svg-icon>
               </div>
-              <div class="userBottom">
-                <div class="icon">x</div>
-                <div class="iphone">0323005</div>
-              </div>
-              <div class="close">x</div>
-            </div>
-            <div class="user">
-              <div class="userTop">
-                <div>张阳阳</div>
-                <span>分局局长</span>
-              </div>
-              <div class="userBottom">
-                <div class="icon">x</div>
-                <div class="iphone">0323005</div>
-              </div>
-              <div class="close">x</div>
+              <div class="iphone">0323005</div>
             </div>
           </div>
         </div>
-        <div class="userCount">
+      </div>
+      <div class="inviteSelect" >
           <div class="userNumber">
             已选<span> 20 </span>人,您还可以选择 <span> 70 </span> 人
           </div>
-          <div class="inviteBtn">邀请成员</div>
-        </div>
-
-        <div class="smsCount">
-          <div class="smsCountInner">短信内容:</div>
-          <div class="message">
-            已经吊牌警员，请注意......
-            <div class="messageTip">
-              <div class="insert">插入常用语句</div>
-              <div class="clear">清空</div>
-              <div class="insertInner">
-                <div class="messageList active">希望各部门工作</div>
-                <div class="messageList">希望各部门工作</div>
-                <div class="messageList">希望各部门工作</div>
-                <div class="messageList">希望各部门工作</div>
-                <div class="arrowCenterTop"></div>
-              </div>
-            </div>
+          <div class="inviteBtn">
+            <el-button type="primary" class="sendBtn">主要按钮</el-button>
           </div>
-        </div>
-
       </div>
+     <div class="send">
+        <div class="sendTile">短信内容</div>
+        <div class="sendMain">
+          <el-input
+            type="textarea"
+            :autosize="{ minRows: 6, maxRows: 8}"
+            placeholder="请输入内容"
+            resize="none"
+            v-model="textarea3">
+          </el-input>
+          <div class="inpuSlecte">
+            <div class="insert">
+              <span class="icon">
+                <svg-icon name='smsTermActive' size='22'></svg-icon>
+              </span>
+              <div class="term">
+                <span>常用语</span>
+                <div class="termPop">
+                  <popupList/>
+                </div>
+              </div>
+              
+            </div>
+            <div class="clearInput">清空</div>
+          </div>
+          <div class="inputTitle">
+            
+              <el-checkbox label="启用签名" v-model="checked"></el-checkbox>
+              <el-checkbox label="定时发送"></el-checkbox>
+              <el-date-picker
+                style="margin-left:20px;"
+                v-model="value1"
+                type="datetime"
+                placeholder="选择日期时间">
+              </el-date-picker>
+               <div class="insertInner">
+                <popupList/>
+              </div>
+              
+          </div>
+          <el-button type="primary" class="sendBtn">主要按钮</el-button>
+        </div>
+      </div> -->
+      <router-view/>
     </div>
+
   </div>
 </template>
-
 <script>
+import smsLeft from './components/smsLeft.vue'
 export default {
-
+	name: 'smsScheduling',
+	components: {
+		smsLeft,
+	},
+	data() {
+		return {}
+	},
 }
 </script>
+<style lang="less" scoped>
+.smsScheduling {
+	height: 100%;
+	width: 100%;
+	display: flex;
+	justify-content: space-between;
+	.smsContent {
+		width: calc(100% - 259px);
+		background-color: #ffffff;
+		margin: 10px;
+		padding: 10px;
+		box-sizing: border-box;
+		//  .recipient{
+		//    height: 40%;
+		//    display: flex;
+		//    .recipientTitle{
+		//      height: 100%;
+		//      width: 8%;
+		//      text-align: right;
+		//      margin-right: 20px;
+		//      margin-top: 6px;
+		//      font-size: 16px;
+		//    }
+		//    .recipientUser{
+		//       width: 90%;
+		//       background-color:#F8F8F8;
+		//       padding: 10px 7px 0 17px;
 
-<style lang='less'>
-  .smsSchedulingPage{
-    height: 100%;
-    display: flex;
-    justify-content: space-between;
-    &>.left{
-      width: 270px;
-      background-color: #0376c1;
-    }
-    &>.content{
-      width: 100%;
-      background-color: #F8F8F8; 
-      &>.contentWrap{
-        background-color: #fff;
-        height: 100%;
-        padding-right: 10px;
-        &>.smsTop{
-          height: 40%;
-          display: flex;
-          &>.recipient{
-            width: 10%;
-            height: 100%;
-            text-align: right;
-            padding-right: 20px;
-          }
-          &>.userInfo{
-            width: 90%;
-            position: relative;
-            display: inline-block;
-            padding: 15px 15px 15px 15px;
-            background-color: #F8F8F8;
-            &>.user{
-              background-color: #D7EDFB;
-              width: 16%;
-              display: flex;
-              align-items: center;
-              display: inline-block;
-              border-radius: 5px;
-              position: relative;
-              margin-left: 10px;
-              padding: 10px;
-              &>.userTop{
-                display: inline-block;
-                display: flex;
-                line-height: 24px;
-              }
-              &>.userTop>span{
-                font-size: 12px;
-                margin-left: 10px;
-              }
-              &>.userBottom{
-                display: flex;
-                line-height: 24px;
-                &>.icon{
-                  margin-right: 10px;
-                }
-                &>.iphone{
-                  color:#8D8F91
-                }
-              }
-              &>.close{
-                position: absolute;
-                right: -10px;
-                top: -10px;
-                height: 26px;
-                width: 26px;
-                background-color: rgba(0, 0, 0, 0.6);
-                text-align: center;
-                vertical-align: top;
-                border-radius: 50%;
-                color: #fff;
-              }
-            }
-          }
-        }
-        &>.userCount{
-          height: 60px;
-          text-align: right;
-          color: #666666;
-          &>.userNumber{
-            line-height: 60px;
-            display: inline-block;
-            &> span:nth-child(1) {
-              color:#000000;
-            }
-             &> span:nth-child(2) {
-              color:#F35955;
-            }
-          }
-          &>.inviteBtn{
-            height: 40px;
-            width: 120px;
-            background-color: #0376C1;
-            display: inline-block;
-            vertical-align: middle;
-            color: #ffffff;
-            text-align: right;
-            line-height: 40px;
-            padding: 5px;
-            border-radius: 5px;
-          }
-        }
-        &>.smsCount{
-          display: flex;
-          height: 20%;
-          margin-top: 5px;
-          
-          &>.smsCountInner{
-            width: 10%;
-            height: 100%;
-            text-align: right;
-            padding-right: 20px;
-          }
-          &>.message{
-            width: 100%;
-            position: relative;
-            padding: 15px 15px 15px 15px;
-            background-color: #f8f8f8;
-           
-            &>.messageTip{
-              position: absolute;
-              right: 0;
-              bottom: 0;
-              height: 40px;
-              &>.insert{
-                color: #0376C1;
-                display: inline-block;
-                width: 166px;
-                text-align: center;
-              }
-              &>.clear{
-                color: #F47471;
-                display: inline-block;
-                padding-right: 20px;
-              }
-              &>.insertInner{
-                position: absolute;
-                width: 160px;
-                right: 40px;
-                top: 60px;
-                padding: 10px;
-                box-shadow: 4px 2px 2px #F2F2F2;
-                background-color: #F6FAFF;
-                &>.messageList{
-                  line-height: 24px;
-                  font-size: 16px;
-                }
-                &>.messageList.active{
-                  color: #0376C1;
-                }
-                &::after{
-                  content: '';
-                  display: inline-block;
-                  width: 12px;
-                  height: 12px;
-                  border-top: 2px solid #F2F2F2;
-                  border-right: 2px solid #F2F2F2;
-                  background-color: #F6FAFF;
-                  transform: rotate(-45deg);
-                 // -webkit-transform: rotate(-45deg);
-                  position: absolute;
-                  top: -8px;
-                  left: 50%;
-                  margin-left: -6px;
-                }
-              }
-            }
-          }
-        }
-      }
-    }    
+		//       overflow-y: auto;
+		//      .userInfo{
+		//        display: inline-block;
+		//        width:172px;
+		//        height:54px;
+		//        background-color: aqua;
+		//        border-radius: 4px;
+		//        margin:6px;
+		//        padding: 6px 12px 6px 16px;
+		//        position: relative;
+		//        &.el-icon-error:before{
+		//           content: "\E62C";
+		//           position: absolute;
+		//           font-size: 22px;
+		//           right: -4px;
+		//           top: -4px;
+		//        }
+		//        .userTop{
+		//          margin-top:2px;
+		//          line-height: 22px;
+		//          &>div{
+		//            font-size: 18px;
+		//            display: inline-block;
+		//          }
+		//          &>span{
+		//            font-size: 14px;
+		//            padding-left: 10px;
+		//            display: inline-block;
+		//          }
+		//        }
+		//        .userBottom{
+		//          margin-top:7px;
+		//          .icon{
+		//            display: inline-block;
+		//             width: 16px;
+		//             height: 18px;
+		//             margin-left: -4px;
+		//             vertical-align: top;
+		//          }
+		//          .iphone{
+		//            display: inline-block;
+		//            color: #666666;
+		//            font-size: 16px;
+		//            line-height: 22px;
+		//            padding-left: 4px;
+		//          }
+		//        }
+		//      }
+		//    }
+		//  }
+		//  .inviteSelect{
+		//         height: 8%;
+		//         text-align: right;
+		//         color: #666666;
+		//         &>.userNumber{
+		//           line-height: 64px;
+		//           display: inline-block;
+		//           margin-right: 5px;
+		//           &> span:nth-child(1) {
+		//             color:#000000;
+		//           }
+		//            &> span:nth-child(2) {
+		//             color:#F35955;
+		//           }
+		//         }
+		//         &>.inviteBtn{
+		//           display: inline-block;
+		//           cursor: pointer;
+		//           &>.icon{
+		//             margin-left:-10px;
+		//           }
+		//         }
+		//       }
+
+		//  .send{
+		//    height: 48%;
+		//    background: #fff;
+		//    display: flex;
+		//    .sendTile{
+
+		//      height: 100%;
+		//      width: 8%;
+		//      text-align: right;
+		//      margin-right: 20px;
+		//      margin-top: 6px;
+		//      font-size: 16px;
+		//    }
+		//    .sendMain{
+		//      width: 90%;
+		//      background-color:#ffffff;
+		//       position: relative;
+		//      .inpuSlecte{
+		//        display: flex;
+		//        justify-content: flex-end;
+		//        padding-right: 22px;
+		//        position: relative;
+		//        top: 2%;
+		//        .insert{
+		//          height: 19px;
+		//          display: flex;
+		//          .term{
+		//            position: relative;
+		//          }
+		//          .termPop{
+		//            position: absolute;
+		//            left: -50px;
+		//            top: 30px;
+		//            width: 150px;
+		//            height: 300px;
+		//            z-index: 999;
+		//          }
+		//          &>div{
+		//            padding-left: 8px;
+		//            padding-right: 21px;
+		//            color: #0B76BF;
+		//            font-size: 14px;
+		//            cursor: pointer;
+		//            position: relative;
+		//          }
+		//        }
+		//        .clearInput{
+		//          color: #F35A56;
+		//          font-size: 14px;
+		//          cursor: pointer;
+		//        }
+		//      }
+		//      .inputTitle{
+		//        line-height: 60px;
+		//        position: relative;
+		//       .insertInner{
+		//           position: absolute;
+		//           left: -10px;
+		//           top: 60px;
+		//         }
+		//      }
+		//      .sendBtn{
+		//        position: absolute;
+		//        left: 40%;
+		//        transform: translateX(-50%);
+		//        bottom: 0;
+		//      }
+		//    }
+		//  }
   }
-
+  
+}
 </style>

@@ -2,7 +2,7 @@
   <div class="recently">
     <p>最近联系人</p>
     <div>
-      <user-info class="childUser" v-for="item in 10"></user-info>
+      <user-info class="childUser" v-for="(item,index) in 10" :key="index"></user-info>
     </div>
   </div>
 </template>

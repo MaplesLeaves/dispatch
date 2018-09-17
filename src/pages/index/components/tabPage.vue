@@ -1,10 +1,9 @@
 <template>
   <div class="tabPage">
-    <div><span>首页</span>
+    <div><span>工作台</span>
     |</div>
   </div>
 </template>
-
 <script>
 export default {
   name: 'tabPage'

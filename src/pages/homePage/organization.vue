@@ -2,11 +2,11 @@
   <div class="organization">
     <p>单位领导</p>
     <div>
-      <user-info class='childUser' v-for="item in 5"></user-info>
+      <user-info class='childUser' v-for="(item, index) in 5" :key='index'></user-info>
     </div>
     <p>单位警员</p>
     <div>
-      <user-info class='childUser' v-for="item in 5">
+      <user-info class='childUser' v-for="(item, index) in 5" :key='index'>
         <ul style="color:black" class="userMOre" @click.stop>
           <li class='userMoreBox'>
             <svg-icon  name='callPhone' size='20'></svg-icon>

@@ -1,6 +1,9 @@
 <template>
-  <div class="userInfo" @click="isClick = !isClick" :class="{serchClick: isClick,lead: true}">
+  <div class="userInfo" @click="clickItem" :class="{serchClick: isClick,lead: true}">
     <div class="user">
+			<i class="serchIcon">
+				<svg-icon name='serchIt' :color='isClick ? "#F6771F": "#AAAAAA"' size='20'></svg-icon>
+			</i>
       <span class="icon">
         <svg-icon name='userInfo' size='35'></svg-icon>
       </span>
@@ -23,7 +26,6 @@
 		</transition>
   </div>
 </template>
-
 <script>
 export default {
 	name: 'userInfo',
@@ -33,9 +35,14 @@ export default {
 			isClick: false,
 		}
 	},
+	methods: {
+		clickItem(event) {
+			this.isClick = true
+		}
+	}
 }
 </script>
-<style lang='less'>
+<style lang='less' scoped>
 .userInfo {
 	position: relative;
 	display: inline-block;
@@ -50,6 +57,11 @@ export default {
 		display: flex;
 		justify-content: space-between;
 		align-items: center;
+		&>.serchIcon{
+			position: absolute;
+			top: -3px;
+			left: 0;
+		}
 		& > .icon {
 			width: 40px;
 			height: 40px;

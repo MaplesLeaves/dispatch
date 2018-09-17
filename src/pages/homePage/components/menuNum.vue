@@ -6,7 +6,7 @@
       </span>
     </div>
     <div class="bottom">
-      <el-input class="number" placeholder="请输入电话号码" suffix-icon="el-icon-date" size='mini'>
+      <el-input class="number" placeholder="请输入电话号码" v-model='phoneNum' suffix-icon="el-icon-date" size='mini'>
       </el-input>
       <span style="vertical-align: middle;padding:3px;background:white;border-radius: 3px;">
         <svg-icon name='phone' size='20'></svg-icon>
@@ -20,6 +20,7 @@ export default {
 	name: 'nuenuNum',
 	data() {
 		return {
+			phoneNum: '',
 			numList: [
 				{
 					num: '1',
@@ -60,12 +61,13 @@ export default {
 			],
 		}
 	},
-	serchNum (data) {
-
+	methods:{
+		serchNum (data) {
+		this.phoneNum += data
+	}
 	}
 }
 </script>
-
 <style lang='less'>
 .menuNum {
 	height: 100%;

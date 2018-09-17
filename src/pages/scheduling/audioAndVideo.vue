@@ -12,13 +12,28 @@
       <div></div>
     </div>
     <div class="right">
+      <video-right></video-right>
     </div>
   </div>
 </template>
 
 <script>
+import videoRight from './components/videoRight.vue'
 export default {
-	name: 'audioAndVideo',
+  name: 'audioAndVideo',
+  data () {
+    return {
+    }
+  },
+  components: {
+    videoRight
+  },
+  methods: {
+    
+  },
+  mounted () {
+
+  }
 }
 </script>
 

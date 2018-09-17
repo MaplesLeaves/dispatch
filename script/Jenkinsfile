@@ -1,0 +1,49 @@
+def label = "npm-slave-${UUID.randomUUID().toString()}"
+podTemplate(label: label, cloud: 'kubernetes',
+   volumes: [
+       hostPathVolume(hostPath: '/var/run/docker.sock', mountPath: '/var/run/docker.sock'),
+       hostPathVolume(hostPath: '/root/.kube', mountPath: '/root/.kube')],
+   containers: [
+    containerTemplate(
+        name: 'jnlp', 
+        image: 'images.mti/jenkins/npm-slave:1.4', 
+        alwaysPullImage: false, 
+        args: '${computer.jnlpmac} ${computer.name}'),
+  ]) {
+    node(label) {
+        stage('clone') {
+			echo 'clone from svn'
+			checkout([$class: 'SubversionSCM', additionalCredentials: [], excludedCommitMessages: '', excludedRegions: '', excludedRevprop: '', excludedUsers: '', filterChangelog: false, ignoreDirPropChanges: false, includedRegions: '', locations: [[cancelProcessOnExternalsFail: true, credentialsId: '32f9ec20-9f2a-441a-9020-65ea64e515a6', depthOption: 'infinity', ignoreExternalsOption: true, local: '.', remote: 'svn://10.168.4.220/MDS/trunk/02Src/22Src/WEB']], quietOperation: true, workspaceUpdater: [$class: 'UpdateUpdater']])
+			sh 'svn upgrade'
+	        script {
+	            svnVersionNumber = sh(script: "svn info --show-item last-changed-revision",returnStdout: true).trim()
+	        }
+        }
+		stage('test') {
+			echo 'test system software'
+			echo "'${svnVersionNumber}'"
+			sh 'pwd && ls -l'
+			sh 'sudo kubectl version && sudo docker version && npm -v'
+		}
+		stage('init') {
+			echo 'npm init'
+			sh 'npm config set registry http://10.168.31.168:8081/repository/npm-repo-proxy/'
+		}
+		stage('install') {
+			sh 'npm install chromedriver --chromedriver_cdnurl=http://cdn.npm.taobao.org/dist/chromedriver && npm install'
+		}
+		stage('build') {
+			sh 'npm run build'
+		}
+		stage('upload') {
+		    withCredentials([usernamePassword(credentialsId: 'dockerImage', passwordVariable: 'dockerImagePassword', usernameVariable: 'dockerImageUser')]) {
+				sh 'cp ./script/dockerfile ./'
+				sh "sudo docker login -u ${dockerImageUser} -p ${dockerImagePassword} images.mti && sudo docker build -t images.mti/mds/web:'${svnVersionNumber}' . && sudo docker push images.mti/mds/web:'${svnVersionNumber}'"
+		    }
+		}
+		stage('deploy') {
+			echo 'deploy'
+			sh "cd ./script && sed -i 's/<BUILD_TAG>/${svnVersionNumber}/' mds-web-deploy.yaml && sudo kubectl apply -f mds-web-deploy.yaml"
+		}
+    }
+}

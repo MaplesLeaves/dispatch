@@ -16,20 +16,30 @@
         </div>
       </div>
       <div class="content">
-          <user-card v-for="item in 8" class="userChild"></user-card>
+          <user-card v-for="(item,index) in 8" :key='index' class="userChild"></user-card>
       </div>
     </div>
     <div class="right">
       <p>语音话路信息</p>
       <ul>
         <li>
-          <span>
-            <svg-icon name='hand' size='20'></svg-icon>
+          <span >
+            <svg-icon name='callPhone' size='20'></svg-icon>
           </span>
           
           <p>15094052963</p>
+          <span class="iconBg">
+            <svg-icon name='schDial' size='20'></svg-icon>
+          </span>
+        </li>
+        <li>
           <span>
-            <svg-icon name='hand' size='20'></svg-icon>
+            <svg-icon name='terminal' size='20'></svg-icon>
+          </span>
+          
+          <p>15094052963</p>
+          <span class="iconBg">
+            <svg-icon name='schHang' size='20'></svg-icon>
           </span>
         </li>
       </ul>
@@ -37,7 +47,6 @@
       <el-button size="mini">退出</el-button>
     </div>
     </div>
-    
   </div>
 </template>
 
@@ -47,6 +56,34 @@ export default {
   name: 'voiceConference',
   components: {
     userCard,
+  },
+  data(){
+    return {
+      iconArrayRight:[
+        {
+          iconName:'schDial',
+
+        },
+        {
+          iconName:'schHang'
+        }
+      ],
+      iconArrayLeft:[
+        {
+          direaction:'1',
+          iconName:"callPhone"
+        },
+        {
+          
+          direaction:'2',
+          iconName:"terminal"
+        },
+        {
+          direaction:'3',
+          iconName:"userPhone"
+        }
+      ]
+    }
   }
 }
 </script>
@@ -100,6 +137,11 @@ export default {
           display: flex;
           justify-content: space-between;
           align-items: center;
+          margin-bottom: 5px;
+          &>.iconBg{
+            background-color: #0B76BF;
+            border-radius: 4px;
+          }
           &>p{
             width: calc(~'100% - 50px')
           }

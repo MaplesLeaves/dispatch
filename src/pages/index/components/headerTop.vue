@@ -8,21 +8,9 @@
       </div>
     </div>
     <div class="right">
-      <div class="serchColor">
-        <svg-icon name='home' size='30'></svg-icon>
-        <br> 首页
-      </div>
-      <div>
-        <svg-icon name='messageInfo' size='30'></svg-icon>
-        <br> 事件通讯录
-      </div>
-      <div>
-        <svg-icon name='home' size='30'></svg-icon>
-        <br> 通讯调度
-      </div>
-      <div>
-        <svg-icon name='conference' size='30'></svg-icon>
-        <br> 会议管理
+      <div v-for="(item, index) in navList" :key='index' @click='navClick(item.path)' :class="{serchColor: path === item.path}"> 
+        <svg-icon :name='item.icon' size='30'></svg-icon>
+        <br> {{item.name}}
       </div>
     </div>
   </div>
@@ -30,7 +18,51 @@
 
 <script>
 export default {
-	name: 'headerTop',
+  name: 'headerTop',
+  data () {
+    return {
+      path: 'homePage',
+      navList: [
+        {
+          name: '呼入电话',
+          icon: 'home',
+          path: '12'
+        },
+        {
+          name: '工作台',
+          icon: 'home',
+          path: 'homePage'
+        },
+        {
+          name: '事件通讯录',
+          icon: 'messageInfo',
+          path: '15'
+        },
+        {
+          name: '通讯调度',
+          icon: 'Gis',
+          path: 'communication'
+        },
+        {
+          name: '会议管理',
+          icon: 'conference',
+          path: 'meetingManagement'
+        }
+      ]
+    }
+  },
+  methods: {
+    navClick (data) {
+      this.path = data
+      if(data ==='12' || data === '15'){
+        this.$store.commit('SHOWMESSAGE',true)
+        return false
+      }
+      this.$router.push({
+        name: data
+      })
+    }
+  }
 }
 </script>
 <style lang='less'>

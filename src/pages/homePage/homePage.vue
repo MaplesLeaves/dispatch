@@ -1,17 +1,46 @@
-<<template>
+<template>
   <div class="homePage">
     <div class="left">
-      <left-tree @clickTree='getTree'></left-tree>
+      <left-tree @clickTree='getTree' @catalogue='getCatalogue'></left-tree>
     </div>
     <div class="content">
-      <common v-if="!isShowduty"></common>
-			<recently v-if="!isShowduty"></recently>
-			<be-on-duty v-if="isShowduty"></be-on-duty>
-      <organization v-if="isShowduty"></organization>
+      <div v-if='catalogue'>
+				<common v-if="!isShowduty"></common>
+				<recently v-if="!isShowduty"></recently>
+				<be-on-duty v-if="isShowduty"></be-on-duty>
+				<organization v-if="isShowduty"></organization>
+			</div>
+			<div v-if='!catalogue'>
+				<table-list :list='list' :tableTitle='tableTitle' :translate='translate'></table-list>
+			</div>
+
+				
+			<el-button type="text" @click="centerDialogVisible = true">点击打开 Dialog</el-button>
+
     </div>
     <div class="right">
       <right-phone></right-phone>
     </div>
+			<el-dialog
+			title="提示"
+			:visible.sync="centerDialogVisible"
+			width="30%"
+			top="18%"
+			center>
+				<div class="deletTrue">
+					<div class="deletIcon">
+						<span class="deletWarning">
+							<svg-icon name='warningIcon' size='112'></svg-icon>
+						</span>
+					</div>
+					<div class="isTrue">确定将<span class="spanBlue">张阳阳</span><span class="spanBlue">分局科员</span>从常用联系人中取消</div>
+				</div>
+			<!-- <span>需要注意的是内容是默认不居中的</span> -->
+			<span slot="footer" class="dialog-footer">
+				<el-button @click="centerDialogVisible = false">取 消</el-button>
+				<el-button type="primary" @click="centerDialogVisible = false">确 定</el-button>
+			</span>
+		</el-dialog>
   </div>
 </template>
 <script>
@@ -22,27 +51,124 @@ import organization from './organization.vue'
 import common from './common.vue'
 import beOnDuty from './components/beOnDuty.vue'
 import recently from './recently.vue'
+// import monitorPage from './monitorPage/monitorPage.vue'
+
+
 export default {
 	name: 'homePage',
 	components: {
 		leftTree,
 		rightPhone,
-    userInfo,
-    organization,
+		userInfo,
+		organization,
 		common,
 		beOnDuty,
-		recently
+		recently,
+	
+	
 	},
-	data () {
+	data() {
 		return {
-			isShowduty: false
+			catalogue: true, // 通讯录状态
+			isShowduty: false,
+			centerDialogVisible: false, //弹窗
+			list: [
+				{
+					number: '01154号',
+					type: '球机',
+					typeNum: 'Jk-MA0012',
+					loaction: '小寨十字路口',
+					content: '小寨十字路口有警情发生',
+					status: '10',
+					parameter: '',
+					frames: '',
+					playback: '',
+				},
+				{
+					number: '01154号',
+					type: '球机',
+					typeNum: 'Jk-MA0012',
+					loaction: '小寨十字路口',
+					content: '小寨十字路口有警情发生',
+					status: '10',
+				},
+			],
+			tableTitle: [
+				{
+					type: 'text',
+					name: '名称/编号',
+					key: 'number',
+					width: '100px',
+				},
+				{
+					type: 'text',
+					name: '类型',
+					key: 'type',
+				},
+				{
+					type: 'text',
+					name: '设备编号',
+					key: 'typeNum',
+				},
+				{
+					type: 'text',
+					name: '位置',
+					key: 'loaction',
+				},
+				{
+					type: 'text',
+					name: '描述',
+					key: 'content',
+				},
+				{
+					type: 'status',
+					name: '当前状态',
+					key: 'status',
+				},
+				{
+					type: 'text',
+					name: '设备参数',
+					key: 'parameter',
+				},
+				{
+					type: 'text',
+					name: '实时画面',
+					key: 'frames',
+				},
+				{
+					type: 'text',
+					name: '回放',
+					key: 'playback',
+				},
+			],
 		}
 	},
 	methods: {
-		getTree (...data) { // data[0] 为点击组织树  data[1]为点击数据
+		getCatalogue (data) { // 点击通讯录
+			this.catalogue = data
+		},
+		getTree(...data) {
+			// data[0] 为点击组织树  data[1]为点击数据
 			this.isShowduty = data[0]
+		},
+		getClick () {
+			console.error(456464)
+		},
+		translate(data, value) {
+			// 资源列表数据条件选择
+			if (value.key === 'parameter') {
+				return { name: '详情',click: this.getClick}
+			} else if (value.key === 'frames' || value.key === 'playback') {
+				return '查看'
+			} else if (value.key === 'status') {
+				return {
+					color: 'red',
+					content: '完好',
+				}
+			}
+			return data[value.key]
 		}
-	}
+	},
 }
 </script>
 <style lang='less'>
@@ -62,6 +188,28 @@ export default {
 	& > .right {
 		width: 300px;
 		margin: 10px 10px 0 0;
+	}
+}
+.el-dialog__header{
+	background-color: #0B76BF;
+}
+.el-dialog__title{
+	text-align: left;
+	color: #fff;
+}
+.deletTrue{
+	.deletIcon{
+		height: 112px;
+		width: 112px;
+		margin: 0 auto;
+	}
+	&>div{
+		text-align: center;
+		margin-top: 33px;
+		.spanBlue{
+				color:#0B76BF;
+				padding:0 5px;
+			}
 	}
 }
 </style>

@@ -1,0 +1,4 @@
+FROM nginx
+MAINTAINER zhaop33@sina.com
+LABEL Description="调度台前端."
+COPY dist /usr/share/nginx/html

@@ -13,6 +13,8 @@ import '../static/ztree/js/jquery.ztree.excheck.min'
 import '../static/ztree/css/zTreeStyle.css' 
 import 'jquery'
 import store from './store'
+import components from './components'
+Vue.use(components)
 Vue.component('svg-icon', SvgIcon)
 Vue.component('tree-node', treeNode)
 Vue.use(ElementUI)

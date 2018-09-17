@@ -1,6 +1,6 @@
 <template>
   <div class="menBtn">
-    <div v-for="(item, index) in btnList" :key='index' @click="clickBtn(item.path)">
+    <div v-for="(item, index) in btnList" :key='index' @click="clickBtn(item)">
       <span class='iconImage' style="background:#0B76BF;display:inline-block;padding: 5px" v-if="item.path">
         <svg-icon :name='item.path' size='25' v-if="item.path" ></svg-icon>
       </span>

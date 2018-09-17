@@ -5,8 +5,8 @@
       </div>
       <div class="titleBox">
         <div class="tilleBtn">
-          <span @click="isType = true" :class="{serchClick: isType}">人员通讯录</span>
-          <span @click="isType = false" :class="{serchClick: !isType}">资源通讯录</span>
+          <span @click="catalogue(true)" :class="{serchClick: isType}">人员通讯录</span>
+          <span @click="catalogue(false)" :class="{serchClick: !isType}">资源通讯录</span>
         </div>
         <div class="type">
           <el-button size='mini' @click="serchType(0)" type="primary">行政管辖</el-button>
@@ -28,6 +28,10 @@ export default {
   methods: {
     getNode (data) {
       this.$emit('clickTree',true,data)
+    },
+    catalogue (data) { //点击选择通讯录
+      this.isType = data
+      this.$emit('catalogue',data)
     },
     serchType (data) { // 点击行政管辖  业务管辖
 
