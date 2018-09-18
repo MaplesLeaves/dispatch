@@ -1,8 +1,8 @@
 <template>
   <div class="meetingManagement">
     <div class="left">
-      <div>当前会议</div>
-      <div>历史会议</div>
+      <div :class="{serch: isSerch}" @click="serchItem(true)">当前会议</div>
+      <div :class="{serch: !isSerch}" @click="serchItem(false)">历史会议</div>
     </div>
     <div class="right">
       <history-list></history-list> 
@@ -16,6 +16,16 @@ export default {
   name:'meetingManagement',
   components:{
     historyList
+  },
+  data () {
+    return {
+      isSerch: false
+    }
+  },
+  methods:{
+    serchItem (data) {
+      this.isSerch = data
+    } 
   }
 }
 </script>
@@ -25,7 +35,7 @@ export default {
     height: 100%;
     display: flex;
     justify-content: space-between;
-    align-items: center;
+align-items: flex-end;    
     &>.left{
       width: 239px;
       height: 100%;
@@ -41,11 +51,16 @@ export default {
         margin-top: 20px;
         border-radius: 5px;
       }
+      &>.serch{
+        background: #024B7B;
+        color: white
+      }
     }
     &>.right{
-      margin: 10px;
+      margin: 10px 10px 0 10px;
       width: calc(~'100% - 249px');
-      height: calc(~'100% - 20px');
+      height: calc(~'100% - 10px');
+      background: white
     }
   }
 </style>

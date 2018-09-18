@@ -46,18 +46,13 @@ export default {
     return {
       isShow: false,
       data:'',
-      
     }
   },
   methods: {
     serchUser (data){ // 点击所选择的btn名称
-     this.isShow = data.path
-    //  this.path   = data
+     this.isShow = data.icon
      this.data   = data
-     console.error(this.data)
-    //  console.log(this.path);
     }
-    
   }
 }
 </script>

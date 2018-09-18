@@ -64,14 +64,12 @@ export default {
 			num: 20,
       index: 10,
       leftIcon:{
-
       },
       rightIcon:{
-        rightIcon1:callIn,//呼入
-        rightIcon2:callOut, //呼出
-        rightIcon3:closePhone,
-        rightIcon4:voiceCalls,
-
+        rightIcon1:'callIn',//呼入
+        rightIcon2:'callOut', //呼出
+        rightIcon3:'closePhone',
+        rightIcon4:'voiceCalls',
       }
 		}
 	},

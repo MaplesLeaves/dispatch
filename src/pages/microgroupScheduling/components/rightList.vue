@@ -1,9 +1,10 @@
 <template>
   <div class="rightList">
     <div class="title">
-      <el-input placeholder="搜索群成员"></el-input>
+      <el-input  placeholder="搜索群成员" size="mini"></el-input>
       <p>已有
-        <span></span>人， 您还可以在要请
+        <span>18</span>
+        人， 您还可以在要请
         <span> 10 </span>人</p>
     </div>
     <ul>
@@ -26,7 +27,7 @@
           <svg-icon name='userInfob' size='35' color='white'></svg-icon>
         </span>
         <p>
-          删除成员
+          张大炮
         </p>
       </li>
     </ul>
@@ -43,24 +44,30 @@ export default {
 </script>
 <style lang='less'>
 .rightList {
-	height: 100%;
+  height: 100%;
+  &>.title{
+    margin-top: 10px;
+    &>p{
+      margin: 10px 0;
+    }
+  }
 	& > ul {
 		display: flex;
 		justify-content: space-around;
-		align-items: center;
     flex-wrap: wrap;
-    &>li{
-      text-align: center;
-      &>span{
-        display: inline-block;
-        padding: 10px;
-        border-radius: 50%;
-        background: #29A2F5;
-      }
-    }
-  }
-  &>.footer{
-    text-align: center;
-  }
+    height: calc(~'100% - 115px');
+		& > li {
+			text-align: center;
+			& > span {
+				display: inline-block;
+				padding: 10px;
+				border-radius: 50%;
+				background: #29a2f5;
+			}
+		}
+	}
+	& > .footer {
+		text-align: center;
+	}
 }
 </style>

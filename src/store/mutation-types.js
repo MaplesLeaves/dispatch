@@ -1,3 +1,5 @@
 export const MEWMESSAGE = 'MEWMESSAGE'
 export const SHOWMESSAGE = 'SHOWMESSAGE'
 export const CALLNOW = 'CALLNOW'
+export const ISSERCH = 'ISSERCH'
+export const CLOSEUSER = 'CLOSEUSER'

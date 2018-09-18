@@ -62,14 +62,16 @@ export default {
 	},
 	methods: {
 		go() {
-			switch (this.closePath.path) {
+			switch (this.closePath.icon) {
 				case 'microphone':
 					this.$router.push({
 						name: 'scheduling',
 					})
 					break
 				case 'video':
-					//
+					this.$router.push({
+						name: 'audioAndVideo',
+					})
 					break
 				case 'noteInfo':
 					this.$router.push({
@@ -88,13 +90,14 @@ export default {
 					break
 				case 'videoMessage':
 					this.$router.push({
-						name: 'audioAndVideo',
+						name: 'audioVideoDisPacth',
 					})
 					break
 				default:
 			}
 		},
 		close() {
+			this.$store.commit('ISSERCH',false)
 			this.$emit('close')
 		},
 	},

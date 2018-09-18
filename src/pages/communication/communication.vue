@@ -2,7 +2,7 @@
   <div class="communication">
     <div>
       <div v-for="(item, index) in menuList" :key='index' :class="{serchClick: num === index}">
-        <svg-icon :name='item.icon' :size='50' color='white'></svg-icon>
+        <svg-icon :name='item.icon' size='50' color='white'></svg-icon>
         <p>{{item.name}}</p>
       </div>
     </div>

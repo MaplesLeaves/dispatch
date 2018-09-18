@@ -1,5 +1,5 @@
 <template>
-  <div class="audioChild" @click="isClick = !isClick" :class="{serchClick: isClick,lead: true}">
+  <div class="audioChild"  :class="{serchClick: isClick,lead: true}">
     <div class="user">
       <span class="icon">
         <svg-icon name='userInfo' size='35'></svg-icon>
@@ -23,20 +23,20 @@
     <div class="userBtn">
       <div class="left">
         <span>
-          <svg-icon name='userInfo' size='20'></svg-icon>
+          <svg-icon name='userInfo' size='20' color='#0B76BF'></svg-icon>
         </span>
         参会人
       </div>
       <div class="right">
         <span>
+          <svg-icon name='callIn' size='20' color='white'></svg-icon>
+        </span>
+        <!-- <span>
           <svg-icon name='userInfo' size='20'></svg-icon>
         </span>
         <span>
           <svg-icon name='userInfo' size='20'></svg-icon>
-        </span>
-        <span>
-          <svg-icon name='userInfo' size='20'></svg-icon>
-        </span>
+        </span> -->
       </div>
     </div>
   </div>
@@ -89,8 +89,18 @@ export default {
 		display: flex;
 		justify-content: space-between;
 		align-items: center;
-    background: #eaeaea;
-    padding: 5px ;
+    background: #F8F8F8;
+    padding: 5px;
+    margin-top: 10px;
+    color:#0B76BF;
+    &>.right{
+      &>span{
+        background: #0B76BF;
+        width: 30px;
+        text-align: center;
+        display: inline-block;
+      }
+    }
 	}
 }
 .lead {

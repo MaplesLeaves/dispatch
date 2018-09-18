@@ -10,15 +10,15 @@
         <div class="right">
           <div>
             共参与：
-            <span></span>人
+            <span>15</span>人
           </div>
           <div>
-            共参与：
-            <span></span>人
+            已参与：
+            <span>15</span>人
           </div>
           <div>
-            共参与：
-            <span></span>人
+            未参与：
+            <span>15</span>人
           </div>
           <div>
             <el-button size='mini' type="primary">
@@ -26,10 +26,9 @@
             </el-button>
           </div>
           <div>
-            大
+            <svg-icon name='screenThree' size='20'></svg-icon>
           </div>
         </div>
-
       </div>
       <div class="content">
         <audio-child v-for="(item, index) in 10 " :key="index" class="userChild"></audio-child>

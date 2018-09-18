@@ -1,8 +1,8 @@
 <template>
   <div class="menBtn">
     <div v-for="(item, index) in btnList" :key='index' @click="clickBtn(item)">
-      <span class='iconImage' style="background:#0B76BF;display:inline-block;padding: 5px" v-if="item.path">
-        <svg-icon :name='item.path' size='25' v-if="item.path" ></svg-icon>
+      <span class='iconImage' style="background:#0B76BF;display:inline-block;padding: 5px" v-if="item.icon">
+        <svg-icon :name='item.icon' size='25' v-if="item.icon" ></svg-icon>
       </span>
       <br>
       {{item.name}}
@@ -17,35 +17,36 @@ export default {
 			btnList: [
 				{
 					name: '语音调度',
-					path: 'microphone',
+					icon: 'microphone',
 				},
 				{
 					name: '音频视频调度',
-					path: 'video',
+					icon: 'video',
 				},
 				{
 					name: '短信调度',
-					path: 'noteInfo',
+					icon: 'noteInfo',
 				},
 				{
 					name: '微群调度',
-					path: 'wechat',
+					icon: 'wechat',
+					path: 'microgroupScheduling'
 				},
 				{
 					name: '语音会议',
-					path: 'voiceMessage',
+					icon: 'voiceMessage',
 				},
 				{
 					name: '音视频会议',
-					path: 'videoMessage',
+					icon: 'videoMessage',
 				},
 				{
 					name: 'Gis调度',
-					path: 'Gis',
+					icon: 'Gis',
 				},
 				{
 					name: '敬请期待',
-					path: '',
+					icon: '',
 				},
 				{},
 			],
@@ -53,8 +54,14 @@ export default {
 	},
   methods:{
     clickBtn (data) {
-			console.error(data)
+			if(data.path){
+				this.$router.push({
+					name: data.path
+				})
+				return
+			}
 			this.$emit('serchUser',data)
+			this.$store.commit('ISSERCH',true)
     }
   }
 }

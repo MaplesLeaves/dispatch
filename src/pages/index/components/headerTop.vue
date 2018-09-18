@@ -12,6 +12,13 @@
         <svg-icon :name='item.icon' size='30'></svg-icon>
         <br> {{item.name}}
       </div>
+      <div>
+        <img  style='width: 45px;height:45px;border-radius: 50%' src="https://gss1.bdstatic.com/9vo3dSag_xI4khGkpoWK1HF6hhy/baike/w%3D268%3Bg%3D0/sign=c708fc0ac41b9d168ac79d67cbe5d3b2/8601a18b87d6277f2fe15ced22381f30e824fc70.jpg" alt="">
+        <span style="display: inline-block;">
+            <strong>张大炮</strong>
+            <p>6号坐席台</p>
+        </span>
+      </div>
     </div>
   </div>
 </template>
@@ -71,7 +78,7 @@ export default {
 	justify-content: space-between;
 	align-items: center;
 	background: #0b76bf;
-	color: white;
+  color: white;
 	& > .left {
     img{
       vertical-align: middle;

@@ -4,9 +4,7 @@
       <slot></slot>
       <el-table-column :label="item.name" v-for="(item , index) in tableTitle" :key='index' align='center' :width="item.width">
         <template slot-scope="scope">
-          <div class="hidden" v-if="item.type === 'text'" @click="translate(scope.row,item).click ? translate(scope.row,item).click() :''">
-            <!-- {{scope.row}} -->
-            {{typeof (translate(scope.row,item))=== 'object' ? translate(scope.row,item).name :translate(scope.row,item) }}
+          <div class="hidden" v-if="item.type === 'text'" v-html="typeof (translate(scope.row,item))=== 'object' ? translate(scope.row,item).name :translate(scope.row,item)" @click="translate(scope.row,item).click ? translate(scope.row,item).click(scope.row) :''">
           </div>
           <el-tooltip class="item" effect="dark" :content="translate(scope.row,item).content" placement="top-start" v-if="item.type ==='status' ">
 						 <span class="circle" :style="{background:translate(scope.row,item).color}"></span>

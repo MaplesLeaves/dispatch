@@ -1,15 +1,9 @@
 <template>
   <div class="audioAndVideo">
     <div class="left">
-      <div></div>
-      <div></div>
-      <div></div>
-      <div></div>
-      <div></div>
-      <div></div>
-      <div></div>
-      <div></div>
-      <div></div>
+      <div v-for="(item,index) in 9" :key='index'>
+        <video src="../../assets/video/alarm.mp4" controls="controls" style="width: 100%;height: 100%;object-fit: fill"></video>
+      </div>
     </div>
     <div class="right">
       <video-right></video-right>
@@ -55,8 +49,7 @@ export default {
     &>div{
       width: 33.33%;
       height: 33.33%;
-      border:1px solid red;
-      background: yellow;
+      border:1px solid white;
       box-sizing: border-box;
     }
 	}

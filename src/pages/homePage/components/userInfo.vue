@@ -1,7 +1,7 @@
 <template>
-  <div class="userInfo" @click="clickItem" :class="{serchClick: isClick,lead: true}">
+  <div class="userInfo" @click="isClick =true" :class="{serchClick: serch,lead: true}">
     <div class="user">
-			<i class="serchIcon">
+			<i class="serchIcon" v-if="getIsSerch">
 				<svg-icon name='serchIt' :color='isClick ? "#F6771F": "#AAAAAA"' size='20'></svg-icon>
 			</i>
       <span class="icon">
@@ -27,8 +27,22 @@
   </div>
 </template>
 <script>
+import { mapGetters } from 'vuex'
 export default {
 	name: 'userInfo',
+	computed: {
+    ...mapGetters([
+      'getIsSerch'
+    ])
+	},
+	props: {
+		serch: {
+			type: Boolean,
+			default () {
+				return false
+			}
+		}
+	},
 	data() {
 		return {
 			isSerch: false,
